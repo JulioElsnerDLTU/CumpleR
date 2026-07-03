@@ -1,0 +1,111 @@
+.admin-container {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+.btn-back {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 1rem;
+  color: var(--color-primary);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.admin-login {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.admin-error {
+  color: #D32F2F;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.admin-dashboard {
+  max-width: 800px;
+  margin: 3rem auto;
+}
+
+.attendees-stats {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+}
+
+.no-attendees {
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.attendees-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.attendee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--color-accent);
+}
+
+.attendee-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.attendee-name {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+}
+
+.attendee-date {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.btn-delete {
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: rgba(211, 47, 47, 0.1);
+  color: #D32F2F;
+}
+
+@media (max-width: 600px) {
+  .attendee-item {
+    flex-direction: row; /* keep x on right */
+  }
+}

@@ -1,0 +1,57 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem 2rem 2rem;
+  /* Add the clear background here so it forms the header of the letter */
+  background-image: linear-gradient(to bottom, rgba(43, 58, 44, 0.4), rgba(43, 58, 44, 0.8)), url('/bg-hero.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  margin-top: -6px; /* offset the top border */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--color-bg);
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-accent);
+  margin: 0 auto 1.5rem auto;
+}
+
+.hero-date {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}

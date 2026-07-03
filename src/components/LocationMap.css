@@ -1,0 +1,53 @@
+.location-section {
+  padding: 2rem 1.5rem 4rem 1.5rem;
+}
+
+.location-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.location-description {
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.125rem;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: 0 auto 2rem auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(43, 58, 44, 0.1);
+}
+
+.location-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.location-btn {
+  min-width: 200px;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .location-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .location-btn {
+    width: 100%;
+  }
+}
