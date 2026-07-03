@@ -2,5 +2,11 @@ name = "tioruben-invitation"
 pages_build_output_dir = "dist"
 compatibility_date = "2024-03-20"
 
-# La vinculación a KV (RSVP_DB) se configurará manualmente
-# desde el panel de control (Dashboard) de Cloudflare Pages.
+# Vinculación a Cloudflare KV para guardar los invitados (compartido entre todos los dispositivos).
+# El binding DEBE llamarse "RSVP_DB" porque así lo usan las funciones en functions/api/.
+#
+# PASO IMPORTANTE: reemplaza "PON_AQUI_TU_NAMESPACE_ID" por el ID real del namespace
+# que crees en Cloudflare (Dashboard > Storage & Databases > KV > Create).
+[[kv_namespaces]]
+binding = "RSVP_DB"
+id = "ad04bb07fb55462c95303e8d9523e255"

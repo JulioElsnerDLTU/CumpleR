@@ -4,8 +4,17 @@ export async function onRequestPost(context) {
     const { firstName, lastName } = data;
     
     if (!firstName || !lastName) {
-      return new Response(JSON.stringify({ error: 'Nombre y apellido son requeridos' }), { 
+      return new Response(JSON.stringify({ error: 'Nombre y apellido son requeridos' }), {
         status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Verificar que el binding de KV exista. Si falta, la lista sería "local"
+    // por dispositivo y no se compartiría entre dispositivos.
+    if (!context.env.RSVP_DB) {
+      return new Response(JSON.stringify({ error: 'El almacenamiento (KV RSVP_DB) no está configurado en Cloudflare.' }), {
+        status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }

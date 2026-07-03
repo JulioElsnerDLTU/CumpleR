@@ -7,8 +7,15 @@ export async function onRequestGet(context) {
     const secretPin = context.env.ADMIN_PIN || "7777";
     
     if (!authHeader || authHeader !== `Bearer ${secretPin}`) {
-      return new Response(JSON.stringify({ error: 'No autorizado' }), { 
+      return new Response(JSON.stringify({ error: 'No autorizado' }), {
         status: 401,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    if (!context.env.RSVP_DB) {
+      return new Response(JSON.stringify({ error: 'El almacenamiento (KV RSVP_DB) no está configurado en Cloudflare.' }), {
+        status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }

@@ -26,29 +26,9 @@ export default function RSVPForm() {
       setFirstName('');
       setLastName('');
     } catch (err) {
-      console.warn("API failed, falling back to local storage mock for development.", err);
-      // Fallback for local development if Cloudflare API is not running
-      try {
-        const key = 'mock_attendees';
-        const existing = JSON.parse(localStorage.getItem(key) || '[]');
-        existing.push({
-          id: `mock_id_${Date.now()}`,
-          firstName,
-          lastName,
-          timestamp: Date.now()
-        });
-        localStorage.setItem(key, JSON.stringify(existing));
-        
-        // Simular tiempo de red
-        setTimeout(() => {
-          setStatus('success');
-          setFirstName('');
-          setLastName('');
-        }, 600);
-      } catch (localErr) {
-        setStatus('error');
-        setErrorMessage('Hubo un problema al enviar tu confirmación.');
-      }
+      console.error('No se pudo enviar la confirmación.', err);
+      setStatus('error');
+      setErrorMessage('Hubo un problema al enviar tu confirmación.');
     }
   };
 

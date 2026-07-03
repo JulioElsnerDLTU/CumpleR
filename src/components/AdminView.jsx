@@ -21,23 +21,19 @@ export default function AdminView({ onBack }) {
       });
 
       if (!response.ok) {
-        throw new Error('Fallback to local');
+        if (response.status === 401) {
+          throw new Error('PIN incorrecto');
+        }
+
+        throw new Error('No se pudo cargar la lista de invitados');
       }
 
       const data = await response.json();
       setAttendees(data);
       setIsAuthenticated(true);
     } catch (err) {
-      console.warn("API failed, falling back to local storage mock for development.", err);
-      // Fallback local
-      if (pin === '7777') {
-        const localData = JSON.parse(localStorage.getItem('mock_attendees') || '[]');
-        localData.sort((a, b) => b.timestamp - a.timestamp);
-        setAttendees(localData);
-        setIsAuthenticated(true);
-      } else {
-        setError('PIN incorrecto');
-      }
+      console.error('No se pudo iniciar sesión en admin.', err);
+      setError(err.message || 'No se pudo cargar la lista de invitados');
     } finally {
       setLoading(false);
     }
@@ -57,18 +53,16 @@ export default function AdminView({ onBack }) {
       });
 
       if (!response.ok) {
-        throw new Error('Fallback to local');
+        if (response.status === 401) {
+          throw new Error('No autorizado');
+        }
+
+        throw new Error('No se pudo eliminar el invitado');
       }
 
       setAttendees(attendees.filter(att => att.id !== attendeeId));
     } catch (err) {
-      console.warn("API failed, falling back to local storage mock for development.", err);
-      if (pin === '7777') {
-        const localData = JSON.parse(localStorage.getItem('mock_attendees') || '[]');
-        const updated = localData.filter(att => att.id !== attendeeId);
-        localStorage.setItem('mock_attendees', JSON.stringify(updated));
-        setAttendees(updated);
-      }
+      console.error('No se pudo eliminar el invitado.', err);
     }
   };
 
